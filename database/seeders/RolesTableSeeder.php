@@ -15,6 +15,9 @@ class RolesTableSeeder extends Seeder
                 'name' => 'Super Admin'
             ],
             [
+                'name' => 'Administrador'
+            ],
+            [
                 'name' => 'Diretor'
             ],
             [

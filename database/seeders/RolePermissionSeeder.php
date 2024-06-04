@@ -12,6 +12,7 @@ class RolePermissionSeeder extends Seeder
     public function run()
     {
         // Buscar as permissões criadas anteriormente
+        $managePermissions = Permission::where('name', 'Gerenciar permissões')->first();
         $manageEstablishments = Permission::where('name', 'Gerenciar estabelecimentos')->first();
         $manageCourses = Permission::where('name', 'Gerenciar cursos')->first();
         $manageEvents = Permission::where('name', 'Gerenciar eventos')->first();
@@ -20,6 +21,9 @@ class RolePermissionSeeder extends Seeder
         $viewGrades = Permission::where('name', 'Ver notas')->first();
 
         // Associar permissões aos perfis
+        $administratorRole = Role::where('name', 'Administrador')->first();
+        $administratorRole->syncPermissions([$managePermissions, $manageEstablishments, $manageCourses, $manageEvents]);
+
         $directorRole = Role::where('name', 'Diretor')->first();
         $directorRole->syncPermissions([$manageEstablishments, $manageCourses, $manageEvents]);
 
