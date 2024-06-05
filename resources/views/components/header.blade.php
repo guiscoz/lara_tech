@@ -4,8 +4,15 @@
             <a class="navbar-brand" href="/">LaraTech</a>
             <ul class="navbar-nav">
                 @auth
+                    @can('Gerenciar permissões')
+                        <li class="nav-item">
+                            <a href="{{route('permissions')}}" class="nav-link">Gerenciar permissões</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('roles')}}" class="nav-link">Gerenciar perfis</a>
+                        </li>
+                    @endcan
                     <li class="nav-item">
-
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <a href="{{ route('logout') }}"

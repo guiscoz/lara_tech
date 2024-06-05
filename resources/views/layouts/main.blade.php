@@ -7,11 +7,24 @@
         <title>@yield('title')</title>
     </head>
 
+    <style>
+            html, body {
+                height: 100%;
+            }
+            body {
+                display: flex;
+                flex-direction: column;
+            }
+            main {
+                flex: 1;
+            }
+        </style>
+
     <body class="antialiased">
         @component('components.header')
         @endcomponent
 
-        <main class="py-4">
+        <main class="py-4 vh-80">
             <div class="container">
                 @if(session('msg'))
                     <div class="alert alert-success" role="alert">

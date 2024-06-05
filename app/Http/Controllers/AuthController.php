@@ -11,11 +11,6 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function home()
-    {
-        return view('welcome');
-    }
-
     public function registerForm()
     {
         return view('auth.register');
