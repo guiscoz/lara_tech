@@ -30,10 +30,8 @@ class AuthController extends Controller
             'password' => bcrypt($request->password)
         ]);
 
-        // Autenticar o usuário após o registro
         Auth::login($user);
 
-        // Redirecionar para a página inicial ou qualquer outra página após o login
         return redirect('/');
     }
 
@@ -57,11 +55,8 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 }
