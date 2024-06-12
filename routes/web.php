@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
@@ -33,5 +34,12 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/edit/{id}', [PermissionController::class, 'edit'])->name('permission.edit');
         Route::put('/update/{id}', [PermissionController::class, 'update'])->name('permission.update');
         Route::delete('/delete/{id}', [PermissionController::class, 'destroy'])->name('permission.destroy');
+    });
+
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('', [UserController::class, 'index'])->name('users');
+        Route::get('/{id}/roles', [UserController::class, 'roles'])->name('user.roles');
+        Route::put('/{id}/roles/sync', [UserController::class, 'rolesSync'])->name('user.rolesSync');
+        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('destroyUser');
     });
 });

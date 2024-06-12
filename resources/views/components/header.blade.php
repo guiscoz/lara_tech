@@ -11,6 +11,9 @@
                         <li class="nav-item">
                             <a href="{{route('roles')}}" class="nav-link">Gerenciar perfis</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('users')}}" class="nav-link">Gerenciar usuários</a>
+                        </li>
                     @endcan
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST">
