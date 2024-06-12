@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
             PermissionsTableSeeder::class,
             RolesUsersTableSeeder::class,
             RolePermissionSeeder::class,
+            StatesTableSeeder::class,
+            CitiesTableSeeder::class,
         ]);
 
         $roles = [

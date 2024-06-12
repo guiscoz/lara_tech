@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CampusController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
@@ -14,6 +15,11 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::group(['prefix' => 'campus'], function () {
+    Route::get('', [CampusController::class, 'index'])->name('campuses');
+    Route::get('/show/{id}', [CampusController::class, 'show'])->name('campus.show');
+});
 
 Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'role'], function () {
@@ -41,5 +47,13 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/{id}/roles', [UserController::class, 'roles'])->name('user.roles');
         Route::put('/{id}/roles/sync', [UserController::class, 'rolesSync'])->name('user.rolesSync');
         Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('destroyUser');
+    });
+
+    Route::group(['prefix' => 'campus'], function () {
+        Route::get('/create', [CampusController::class, 'create'])->name('campus.create');
+        Route::post('/store', [CampusController::class, 'store'])->name('campus.store');
+        Route::get('/edit/{id}', [CampusController::class, 'edit'])->name('campus.edit');
+        Route::put('/update/{id}', [CampusController::class, 'update'])->name('campus.update');
+        Route::delete('/delete/{id}', [CampusController::class, 'destroy'])->name('campus.destroy');
     });
 });
