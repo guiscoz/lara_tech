@@ -17,13 +17,13 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'campus'], function () {
-    Route::get('', [CampusController::class, 'index'])->name('campuses');
+    Route::get('', [CampusController::class, 'index'])->name('campus.index');
     Route::get('/show/{id}', [CampusController::class, 'show'])->name('campus.show');
 });
 
 Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'role'], function () {
-        Route::get('', [RoleController::class, 'index'])->name('roles');
+        Route::get('', [RoleController::class, 'index'])->name('role.index');
         Route::get('/{role}/permissions', [RoleController::class, 'permissions'])->name('role.permissions');
         Route::put('/{role}/permissions/sync', [RoleController::class, 'permissionsSync'])->name('role.permissionsSync');
         Route::get('/create', [RoleController::class, 'create'])->name('role.create');
@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth'], function(){
     });
 
     Route::group(['prefix' => 'permission'], function () {
-        Route::get('', [PermissionController::class, 'index'])->name('permissions');
+        Route::get('', [PermissionController::class, 'index'])->name('permission.index');
         Route::get('/create', [PermissionController::class, 'create'])->name('permission.create');
         Route::post('/store', [PermissionController::class, 'store'])->name('permission.store');
         Route::get('/edit/{id}', [PermissionController::class, 'edit'])->name('permission.edit');
@@ -43,10 +43,10 @@ Route::group(['middleware' => 'auth'], function(){
     });
 
     Route::group(['prefix' => 'user'], function () {
-        Route::get('', [UserController::class, 'index'])->name('users');
+        Route::get('', [UserController::class, 'index'])->name('user.index');
         Route::get('/{id}/roles', [UserController::class, 'roles'])->name('user.roles');
         Route::put('/{id}/roles/sync', [UserController::class, 'rolesSync'])->name('user.rolesSync');
-        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('destroyUser');
+        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     });
 
     Route::group(['prefix' => 'campus'], function () {

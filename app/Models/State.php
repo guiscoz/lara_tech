@@ -19,8 +19,13 @@ class State extends Model
         'updated_at',
     ];
 
-    public function city()
+    public function cities()
     {
         return $this->hasMany(City::class);
+    }
+
+    public function campuses()
+    {
+        return $this->hasMany(Campus::class);
     }
 }

@@ -28,8 +28,8 @@
                 <td>{{$user->email}} </td>
                 <td>{{$user->created_at != null ? date_format($user->created_at, "s:i:H - d/m/Y") : 'Criado no Seeder' }} </td>
                 <td class="d-flex">
-                    <a class="btn btn-sm btn-outline-success mx-2" href="/user/{{$user->id}}/roles">Perfis</a>
-                    <form action="/user/delete/{{$user->id}}" method="post">
+                    <a class="btn btn-sm btn-outline-success mx-2" href="{{ route('user.roles', $user->id) }}">Perfis</a>
+                    <form action="{{ route('user.destroy', $user->id) }}" method="post">
                         @csrf
                         @method('delete')
                         <input class="btn btn-sm btn-outline-danger mx-2" type="submit" value="Remover">

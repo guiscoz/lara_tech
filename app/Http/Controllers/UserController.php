@@ -72,6 +72,6 @@ class UserController extends Controller
         $user = User::where('id', $id);
         $user->delete();
 
-        return redirect()->route('users');
+        return redirect()->route('user.index');
     }
 }

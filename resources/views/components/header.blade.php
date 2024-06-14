@@ -6,13 +6,13 @@
                 @auth
                     @can('Gerenciar permissões')
                         <li class="nav-item">
-                            <a href="{{route('permissions')}}" class="nav-link">Gerenciar permissões</a>
+                            <a href="{{route('permission.index')}}" class="nav-link">Gerenciar permissões</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('roles')}}" class="nav-link">Gerenciar perfis</a>
+                            <a href="{{route('role.index')}}" class="nav-link">Gerenciar perfis</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('users')}}" class="nav-link">Gerenciar usuários</a>
+                            <a href="{{route('user.index')}}" class="nav-link">Gerenciar usuários</a>
                         </li>
                     @endcan
                     <li class="nav-item">

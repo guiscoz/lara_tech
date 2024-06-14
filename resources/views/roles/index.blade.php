@@ -18,9 +18,9 @@
                 <td>{{$role->id-1}} </td>
                 <td>{{$role->name}} </td>
                 <td class="d-flex">
-                    <a class="btn btn-sm btn-outline-success mx-2" href="/role/edit/{{$role->id}}">Editar</a>
-                    <a class="btn btn-sm btn-outline-info mx-2" href="/role/{{$role->id}}/permissions">Permissões</a>
-                    <form action="/role/delete/{{$role->id}}" method="post">
+                    <a class="btn btn-sm btn-outline-success mx-2" href="{{ route('role.edit', $role->id) }}">Editar</a>
+                    <a class="btn btn-sm btn-outline-info mx-2" href="{{ route('role.permissions', $role->id) }}">Permissões</a>
+                    <form action="{{ route('role.destroy', $role->id) }}" method="post">
                         @csrf
                         @method('delete')
                         <input class="btn btn-sm btn-outline-danger mx-2" type="submit" value="Remover">

@@ -4,19 +4,20 @@
 
 @section('content')
     <div class="container">
-        @auth
         <div class="card mt-3">
+            @auth
                 <div class="card-body">
                     <p class="card-text">Autenticado</p>
                 </div>
-            </div>
-        @endauth
-        @guest
-            <div class="card mt-3">
+            @endauth
+            @guest
                 <div class="card-body">
                     <p class="card-text">Hello world</p>
                 </div>
+            @endguest
+            <div class="card-body">
+                <a class="btn btn-primary" href="{{ route('campus.index') }}">Visualizar campus</a>
             </div>
-        @endguest
+        </div>
     </div>
 @endsection

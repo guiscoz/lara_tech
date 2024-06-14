@@ -33,7 +33,7 @@
                         </div>
                         <div class="d-flex justify-content-end mt-4">
                             <button type="submit" class="btn btn-primary mx-3">Editar permissão</button>
-                            <a class="btn btn-danger" href="{{ route('permissions') }}">Cancelar</a>
+                            <a class="btn btn-danger" href="{{ route('permission.index') }}">Cancelar</a>
                         </div>
                     </form>
                 </div>

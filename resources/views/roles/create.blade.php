@@ -33,7 +33,7 @@
 
                         <div class="d-flex justify-content-end mt-4">
                             <button type="submit" class="btn btn-primary mx-3">Cadastrar perfil</button>
-                            <a class="btn btn-danger" href="{{ route('roles') }}">Cancelar</a>
+                            <a class="btn btn-danger" href="{{ route('role.index') }}">Cancelar</a>
                         </div>
                     </form>
                 </div>

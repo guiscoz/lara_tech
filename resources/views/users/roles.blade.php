@@ -34,7 +34,7 @@
 
                         <div class="d-flex justify-content-end mt-4">
                             <button type="submit" class="btn btn-primary mx-3">Sincronizar usuário</button>
-                            <a class="btn btn-danger" href="{{ route('users') }}">Cancelar</a>
+                            <a class="btn btn-danger" href="{{ route('user.index') }}">Cancelar</a>
                         </div>
                     </form>
                 </div>

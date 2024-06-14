@@ -40,7 +40,7 @@ class PermissionController extends Controller
         $permission->name = $request->name;
         $permission->save();
 
-        return redirect()->route('permissions');
+        return redirect()->route('permission.index');
     }
 
     public function edit($id)
@@ -64,7 +64,7 @@ class PermissionController extends Controller
         $permission->name = $request->name;
         $permission->save();
 
-        return redirect()->route('permissions');
+        return redirect()->route('permission.index');
     }
 
     public function destroy($id)
@@ -76,6 +76,6 @@ class PermissionController extends Controller
         $permission = Permission::where('id', $id);
         $permission->delete();
 
-        return redirect()->route('permissions');
+        return redirect()->route('permission.index');
     }
 }

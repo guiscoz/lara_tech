@@ -41,7 +41,7 @@ class RoleController extends Controller
         $role->name = $request->name;
         $role->save();
 
-        return redirect()->route('roles');
+        return redirect()->route('role.index');
     }
 
     public function edit($id)
@@ -65,7 +65,7 @@ class RoleController extends Controller
         $role->name = $request->name;
         $role->save();
 
-        return redirect()->route('roles');
+        return redirect()->route('role.index');
     }
 
     public function destroy($id)
@@ -77,7 +77,7 @@ class RoleController extends Controller
         $role = Role::where('id', $id);
         $role->delete();
 
-        return redirect()->route('roles');
+        return redirect()->route('role.index');
     }
 
     public function permissions($role)
