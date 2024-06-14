@@ -18,6 +18,7 @@
             <div class="card-body">
                 <a class="btn btn-primary" href="{{ route('campus.index') }}">Visualizar campus</a>
                 <a class="btn btn-primary" href="{{ route('event.index') }}">Visualizar eventos</a>
+                <a class="btn btn-primary" href="{{ route('course.index') }}">Visualizar cursos</a>
             </div>
         </div>
     </div>

@@ -38,7 +38,7 @@
                             @forelse($events as $event)
                                 <tr>
                                     <td>{{ $event->name }}</td>
-                                    <td>{{ $event->campus->title }}</td>
+                                    <td>{{ $event->campus->name }}</td>
                                     <td>{{ date('d/m/Y', strtotime($event->event_date)) }}</td>
                                     <td>{{ date('H:i', strtotime($event->event_time)) }}</td>
                                     <td>

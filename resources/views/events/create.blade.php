@@ -31,7 +31,7 @@
                                 <select class="form-control" name="campus_id" id="campus_id" required>
                                     <option value="">Selecione um campus</option>
                                     @foreach($campuses as $campus)
-                                        <option value="{{ $campus->id }}">{{ $campus->title }}</option>
+                                        <option value="{{ $campus->id }}">{{ $campus->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

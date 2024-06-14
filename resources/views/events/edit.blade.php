@@ -32,7 +32,7 @@
                                 <select class="form-control" name="campus_id" id="campus_id" required>
                                     <option value="">Selecione um campus</option>
                                     @foreach($campuses as $campus)
-                                        <option value="{{ $campus->id }}" {{ $event->campus_id == $campus->id ? 'selected' : '' }}>{{ $campus->title }}</option>
+                                        <option value="{{ $campus->id }}" {{ $event->campus_id == $campus->id ? 'selected' : '' }}>{{ $campus->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

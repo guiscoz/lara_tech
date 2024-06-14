@@ -40,7 +40,7 @@ class CampusController extends Controller
         }
 
         $newCampus = [
-            'title' => $request->title,
+            'name' => $request->name,
             'address' => $request->address,
             'address_number' => $request->address_number,
             'district' => $request->district,
@@ -85,7 +85,7 @@ class CampusController extends Controller
         $campus = Campus::findOrFail($id);
 
         $newData = [
-            'title' => $request->title,
+            'name' => $request->name,
             'address' => $request->address,
             'address_number' => $request->address_number,
             'district' => $request->district,

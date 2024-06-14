@@ -23,8 +23,8 @@
                         @csrf
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="title" class="form-label">Título:</label>
-                                <input type="text" class="form-control" name="title" id="title" required>
+                                <label for="name" class="form-label">Nome:</label>
+                                <input type="text" class="form-control" name="name" id="name" required>
                             </div>
 
                             <div class="col-md-6">

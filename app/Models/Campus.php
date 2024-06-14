@@ -10,7 +10,7 @@ class Campus extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'name',
         'address',
         'address_number',
         'district',

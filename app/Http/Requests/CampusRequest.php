@@ -15,7 +15,7 @@ class CampusRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:150',
+            'name' => 'required|string|max:150',
             'address' => 'required|string|max:150',
             'address_number' => 'required|string|max:10',
             'district' => 'required|string|max:150',
@@ -29,8 +29,8 @@ class CampusRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'O campo título é obrigatório.',
-            'title.max' => 'O campo título não pode ter mais de 150 caracteres.',
+            'name.required' => 'O campo nome é obrigatório.',
+            'name.max' => 'O campo nome não pode ter mais de 150 caracteres.',
             'address.required' => 'O campo endereço é obrigatório.',
             'address.max' => 'O campo endereço não pode ter mais de 150 caracteres.',
             'address_number.required' => 'O campo número é obrigatório.',

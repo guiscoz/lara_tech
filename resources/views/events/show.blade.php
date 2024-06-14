@@ -10,7 +10,7 @@
                 <div class="card-header">{{ $event->name }}</div>
 
                 <div class="card-body">
-                    <p><strong>Campus:</strong> {{ $event->campus->title }}</p>
+                    <p><strong>Campus:</strong> {{ $event->campus->name }}</p>
                     <p><strong>Criador:</strong> {{ $event->creator->name }}</p>
                     <p><strong>Data:</strong> {{ $event->event_date }}</p>
                     <p><strong>Horário:</strong> {{ $event->event_time }}</p>
