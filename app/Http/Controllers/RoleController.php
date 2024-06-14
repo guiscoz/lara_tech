@@ -77,7 +77,7 @@ class RoleController extends Controller
         $role = Role::where('id', $id);
         $role->delete();
 
-        return redirect()->route('role.index');
+        return redirect()->route('role.index')->with('success', 'Perfil apagado com sucesso!');
     }
 
     public function permissions($role)

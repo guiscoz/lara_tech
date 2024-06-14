@@ -5,6 +5,21 @@
 @section('content')
 <div class="container">
     <h1>Gerenciando permissões</h1>
+
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if($errors)
+        @foreach($errors->all() as $error)
+            <div class="alert alert-danger mt-4" role="alert">
+                {{ $error }}
+            </div>
+        @endforeach
+    @endif
+    
     <table class="table table-striped table-bordered mt-4 mx-5">
         <thead>
             <th>ID</th>

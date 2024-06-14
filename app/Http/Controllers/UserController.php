@@ -72,6 +72,6 @@ class UserController extends Controller
         $user = User::where('id', $id);
         $user->delete();
 
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('success', 'Usuário apagado com sucesso!');
     }
 }

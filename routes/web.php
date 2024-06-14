@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CampusController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\UserController;
@@ -17,6 +18,11 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'campus'], function () {
+    Route::get('', [EventController::class, 'index'])->name('event.index');
+    Route::get('/show/{id}', [EventController::class, 'show'])->name('event.show');
+});
+
+Route::group(['prefix' => 'event'], function () {
     Route::get('', [CampusController::class, 'index'])->name('campus.index');
     Route::get('/show/{id}', [CampusController::class, 'show'])->name('campus.show');
 });
@@ -55,5 +61,13 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/edit/{id}', [CampusController::class, 'edit'])->name('campus.edit');
         Route::put('/update/{id}', [CampusController::class, 'update'])->name('campus.update');
         Route::delete('/delete/{id}', [CampusController::class, 'destroy'])->name('campus.destroy');
+    });
+
+    Route::group(['prefix' => 'event'], function () {
+        Route::get('/create', [EventController::class, 'create'])->name('event.create');
+        Route::post('/store', [EventController::class, 'store'])->name('event.store');
+        Route::get('/edit/{id}', [EventController::class, 'edit'])->name('event.edit');
+        Route::put('/update/{id}', [EventController::class, 'update'])->name('event.update');
+        Route::delete('/delete/{id}', [EventController::class, 'destroy'])->name('event.destroy');
     });
 });

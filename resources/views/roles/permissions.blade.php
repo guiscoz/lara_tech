@@ -11,6 +11,12 @@
                 <div class="card-header">Permissões de {{ $role->name }}</div>
 
                 <div class="card-body">
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
                     @if($errors)
                         @foreach($errors->all() as $error)
                             <div class="alert alert-danger mt-4" role="alert">

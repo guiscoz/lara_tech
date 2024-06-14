@@ -6,7 +6,6 @@ use App\Models\Campus;
 use App\Models\City;
 use App\Models\User;
 use App\Models\State;
-use Illuminate\Http\Request;
 use App\Http\Requests\CampusRequest;
 use Spatie\Permission\Exceptions\UnauthorizedException;
 use Illuminate\Support\Facades\Auth;
@@ -110,6 +109,6 @@ class CampusController extends Controller
         $campus = Campus::findOrFail($id);
         $campus->update(['active' => false]);
 
-        return redirect()->route('campus.index')->with('success', 'Campus desativado com sucesso!');
+        return redirect()->route('campus.index')->with('success', 'Campus apagado com sucesso!');
     }
 }
