@@ -12,12 +12,11 @@ class PermissionsTableSeeder extends Seeder
     {
         $permissions = [
             'Gerenciar permissões',
-            'Gerenciar estabelecimentos',
+            'Gerenciar campus',
             'Gerenciar cursos',
             'Gerenciar eventos',
             'Criar provas',
-            'Dar notas',
-            'Ver notas',
+            'Ver desempenho',
         ];
 
         foreach ($permissions as $permission) {

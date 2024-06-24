@@ -26,11 +26,6 @@ class DatabaseSeeder extends Seeder
             'Professor',
             'Professor',
             'Professor',
-            'Aluno', 
-            'Aluno',
-            'Aluno',
-            'Aluno',
-            'Aluno',
         ];
 
         // Criar os próximos usuários e atribuir perfis
@@ -38,5 +33,8 @@ class DatabaseSeeder extends Seeder
             $user = User::factory()->create();
             $user->assignRole($role);
         }
+
+        // Usuários sem perfis
+        $user = User::factory(5)->create();
     }
 }

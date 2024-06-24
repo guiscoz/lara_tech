@@ -23,7 +23,7 @@ class CampusController extends Controller
 
     public function create()
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar estabelecimentos') && !Auth::user()->hasRole('Super Admin')){
+        if(!Auth::user()->hasPermissionTo('Gerenciar campus') && !Auth::user()->hasRole('Super Admin')){
             throw new UnauthorizedException('403', 'Você não tem permissão');
         }
 
@@ -35,7 +35,7 @@ class CampusController extends Controller
 
     public function store(CampusRequest $request)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar estabelecimentos') && !Auth::user()->hasRole('Super Admin')){
+        if(!Auth::user()->hasPermissionTo('Gerenciar campus') && !Auth::user()->hasRole('Super Admin')){
             throw new UnauthorizedException('403', 'Você não tem permissão');
         }
 
@@ -64,7 +64,7 @@ class CampusController extends Controller
 
     public function edit(string $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar estabelecimentos') && !Auth::user()->hasRole('Super Admin')){
+        if(!Auth::user()->hasPermissionTo('Gerenciar campus') && !Auth::user()->hasRole('Super Admin')){
             throw new UnauthorizedException('403', 'Você não tem permissão');
         }
 
@@ -78,7 +78,7 @@ class CampusController extends Controller
 
     public function update(CampusRequest $request, string $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar estabelecimentos') && !Auth::user()->hasRole('Super Admin')){
+        if(!Auth::user()->hasPermissionTo('Gerenciar campus') && !Auth::user()->hasRole('Super Admin')){
             throw new UnauthorizedException('403', 'Você não tem permissão');
         }
     
@@ -102,7 +102,7 @@ class CampusController extends Controller
 
     public function destroy(string $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar estabelecimentos') && !Auth::user()->hasRole('Super Admin')){
+        if(!Auth::user()->hasPermissionTo('Gerenciar campus') && !Auth::user()->hasRole('Super Admin')){
             throw new UnauthorizedException('403', 'Você não tem permissão');
         }
 

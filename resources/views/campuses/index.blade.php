@@ -43,7 +43,7 @@
                                     <td>{{ $campus->coordinator->name }}</td>
                                     <td>
                                         <a href="{{ route('campus.show', $campus->id) }}" class="btn btn-primary btn-sm">Detalhes</a>
-                                        @can('Gerenciar estabelecimentos')
+                                        @can('Gerenciar campus')
                                             <a href="{{ route('campus.edit', $campus->id) }}" class="btn btn-warning btn-sm">Editar</a>
                                             <form action="{{ route('campus.destroy', $campus->id) }}" method="POST" style="display:inline-block;">
                                                 @csrf
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="d-flex justify-content-end mt-4">
-                        @can('Gerenciar estabelecimentos')
+                        @can('Gerenciar campus')
                             <a class="btn btn-primary mx-2" href="{{ route('campus.create') }}">Cadastrar campus</a>
                         @endcan
                         <a class="btn btn-danger" href="{{ route('home') }}">Voltar</a>

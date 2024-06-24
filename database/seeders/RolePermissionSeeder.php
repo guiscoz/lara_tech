@@ -13,27 +13,26 @@ class RolePermissionSeeder extends Seeder
     {
         // Buscar as permissões criadas anteriormente
         $managePermissions = Permission::where('name', 'Gerenciar permissões')->first();
-        $manageEstablishments = Permission::where('name', 'Gerenciar estabelecimentos')->first();
+        $manageCampuses = Permission::where('name', 'Gerenciar campus')->first();
         $manageCourses = Permission::where('name', 'Gerenciar cursos')->first();
         $manageEvents = Permission::where('name', 'Gerenciar eventos')->first();
         $createExams = Permission::where('name', 'Criar provas')->first();
-        $giveGrades = Permission::where('name', 'Dar notas')->first();
-        $viewGrades = Permission::where('name', 'Ver notas')->first();
+        $viewPerfomance = Permission::where('name', 'Ver desempenho')->first();
 
         // Associar permissões aos perfis
         $administratorRole = Role::where('name', 'Administrador')->first();
-        $administratorRole->syncPermissions([$managePermissions, $manageEstablishments, $manageCourses, $manageEvents]);
+        $administratorRole->syncPermissions([$managePermissions, $manageCampuses, $manageCourses, $manageEvents]);
 
         $directorRole = Role::where('name', 'Diretor')->first();
-        $directorRole->syncPermissions([$manageEstablishments, $manageCourses, $manageEvents]);
+        $directorRole->syncPermissions([$manageCampuses, $manageCourses, $manageEvents]);
 
         $coordinatorRole = Role::where('name', 'Coordenador')->first();
         $coordinatorRole->syncPermissions([$manageCourses, $manageEvents]);
 
         $professorRole = Role::where('name', 'Professor')->first();
-        $professorRole->syncPermissions([$createExams, $giveGrades]);
+        $professorRole->syncPermissions([$createExams]);
 
         $studentRole = Role::where('name', 'Aluno')->first();
-        $studentRole->syncPermissions([$viewGrades]);
+        $studentRole->syncPermissions([$viewPerfomance]);
     }
 }
