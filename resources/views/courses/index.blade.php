@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Lista de cursos')
+@section('title', 'Lista de Cursos')
 
 @section('content')
 <div class="container">
@@ -23,6 +23,24 @@
                             </div>
                         @endforeach
                     @endif
+
+                    @auth
+                    <form action="{{ route('course.index') }}" method="GET" class="mb-4">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <select name="filter" class="form-select">
+                                    <label for="filter" class="mr-2">Filtrar por:</label>
+                                    <option value="all" {{ request('filter') == 'all' ? 'selected' : '' }}>Sem filtro</option>
+                                    <option value="enrolled" {{ request('filter') == 'enrolled' ? 'selected' : '' }}>Matriculados</option>
+                                    <option value="not_enrolled" {{ request('filter') == 'not_enrolled' ? 'selected' : '' }}>Não Matriculados</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary">Filtrar</button>
+                            </div>
+                        </div>
+                    </form>
+                    @endauth
 
                     <table class="table table-striped">
                         <thead>
@@ -47,6 +65,16 @@
                                                 <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
                                             </form>
                                         @endcan
+                                        @auth
+                                            @if(!in_array($course->id, $enrolledCourses))
+                                                <form action="{{ route('course.enroll', $course->id) }}" method="POST" style="display:inline-block;">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-success btn-sm">Matricular</button>
+                                                </form>
+                                            @else
+                                                <span class="btn btn-secondary btn-sm disabled">Já matriculado</span>
+                                            @endif
+                                        @endauth
                                     </td>
                                 </tr>
                             @empty

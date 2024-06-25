@@ -22,7 +22,6 @@
     
     <table class="table table-striped table-bordered mt-4 mx-5">
         <thead>
-            <th>ID</th>
             <th>Perfil</th>
             <th>Ações</th>
         </thead>
@@ -30,7 +29,6 @@
             @foreach($roles as $key => $role)
             <tr>
                 @if($key > 0)
-                <td>{{$role->id-1}} </td>
                 <td>{{$role->name}} </td>
                 <td class="d-flex">
                     <a class="btn btn-sm btn-outline-success mx-2" href="{{ route('role.edit', $role->id) }}">Editar</a>

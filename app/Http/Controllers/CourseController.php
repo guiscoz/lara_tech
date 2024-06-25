@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CourseRequest;
+use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Campus;
 use App\Models\User;
@@ -11,10 +12,24 @@ use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $courses = Course::with(['campus', 'teacher'])->where('active', true)->paginate(10);
-        return view('courses.index', compact('courses'));
+        $user = Auth::user();
+        $filter = $request->get('filter', 'all');
+
+        $query = Course::with(['campus', 'teacher'])->where('active', true);
+
+        $enrolledCourses = $user ? $user->enrolled()->pluck('course_id')->toArray() : [];
+
+        if ($filter == 'enrolled' && $user) {
+            $query->whereIn('id', $enrolledCourses);
+        } elseif ($filter == 'not_enrolled' && $user) {
+            $query->whereNotIn('id', $enrolledCourses);
+        }
+
+        $courses = $query->paginate(10);
+
+        return view('courses.index', compact('courses', 'enrolledCourses'));
     }
 
     public function create()
@@ -30,7 +45,7 @@ class CourseController extends Controller
 
     public function store(CourseRequest $request)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar eventos') && !Auth::user()->hasRole('Super Admin')){
+        if(!Auth::user()->hasPermissionTo('Gerenciar cursos') && !Auth::user()->hasRole('Super Admin')){
             throw new UnauthorizedException('403', 'Você não tem permissão');
         }
 
@@ -54,7 +69,7 @@ class CourseController extends Controller
 
     public function edit(string $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar eventos') && !Auth::user()->hasRole('Super Admin')){
+        if(!Auth::user()->hasPermissionTo('Gerenciar cursos') && !Auth::user()->hasRole('Super Admin')){
             throw new UnauthorizedException('403', 'Você não tem permissão');
         }
 
@@ -67,7 +82,7 @@ class CourseController extends Controller
 
     public function update(CourseRequest $request, string $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar eventos') && !Auth::user()->hasRole('Super Admin')){
+        if(!Auth::user()->hasPermissionTo('Gerenciar cursos') && !Auth::user()->hasRole('Super Admin')){
             throw new UnauthorizedException('403', 'Você não tem permissão');
         }
 
@@ -87,7 +102,7 @@ class CourseController extends Controller
 
     public function destroy(string $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar eventos') && !Auth::user()->hasRole('Super Admin')){
+        if(!Auth::user()->hasPermissionTo('Gerenciar cursos') && !Auth::user()->hasRole('Super Admin')){
             throw new UnauthorizedException('403', 'Você não tem permissão');
         }
 
@@ -95,5 +110,21 @@ class CourseController extends Controller
         $course->update(['active' => false]);
 
         return redirect()->route('course.index')->with('success', 'Curso apagado com sucesso!');
+    }
+
+    public function enroll(string $id)
+    {
+        $user = Auth::user();
+        $course = Course::findOrFail($id);
+
+        // Associar o usuário ao curso
+        $user->enrolled()->attach($course);
+
+        // Atribuir o perfil de aluno se ainda não tiver
+        if (!$user->hasRole('Aluno') && !$user->hasRole('Super Admin')) {
+            $user->assignRole('Aluno');
+        }
+
+        return redirect()->route('course.index')->with('success', 'Inscrição no curso realizada com sucesso!');
     }
 }

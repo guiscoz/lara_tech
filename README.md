@@ -1,66 +1,81 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Projeto
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Esta é uma plataforma desenvolvida para facilitar a administração e organização de uma escola técnica de tecnologia LaraTech. A aplicação oferece funcionalidades robustas para gerenciar campus, eventos e cursos, proporcionando uma experiência integrada para alunos, professores, coordenadores e administradores.
 
-## About Laravel
+## Funcionalidades
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Gestão de Campus: Cadastro e gerenciamento de informações detalhadas de cada campus, incluindo sua localização.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Calendário de Eventos: Visualização e administração de eventos acadêmicos, permitindo o registro de datas, horários e detalhes específicos de cada evento.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Administração de Cursos: Controle completo sobre os cursos oferecidos, com capacidade de associar professores, definir a quantidade de semestres e monitorar a participação dos alunos.
 
-## Learning Laravel
+- Matrícula de Alunos: Facilidade para alunos se matricularem em cursos disponíveis, com atribuição automática do perfil de aluno e integração com a gestão acadêmica.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Tecnologias usadas
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Laravel versão 11: Framework PHP para o desenvolvimento web e foi utilizada a versão 8.3.8 do PHP.
+MySQL versão 8.4: Sistema de gerenciamento de banco de dados relacional.
+HTML/CSS/Bootstrap: Tecnologias front-end para a interface do usuário.
+JQuery: Para o cadastro de campus, foi criada funções no jquery para prencher os campos de endereço ao digitar um cep válido.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# Ao clonar o repositório
 
-## Laravel Sponsors
+Agora será dados as instruções do que deve ser feito para esta plataforma rodar na sua máquina após clonar o repositório
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Instalações
 
-### Premium Partners
+Será necessário ter instalar o php, MySQL, composer e o apache ou ngnix. Você também pode instalar o Laragon que vai instalar o apache e o nginx para você e executará eles quando o Laragon for ativado.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Variáveis de ambiente
 
-## Contributing
+Agora deve criar o arquivo '.env' usando o '.env.example' como base para armazenar as variáveis de ambientes. Ambos os arquivos ficarão na mesma pasta. Pode todo o conteúdo do exemplo para o arquivo final, só será necessário alterar essas linhas:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+```
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=SUA_SENHA_MYSQL
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+ADMIN_EMAIL=EMAIL_DO_ADMINISTRADOR
+ADMIN_PASSWORD=SENHA_DO_ADMINISTRADOR
+```
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+No DB_DATABASE vai ser inserido o nome do banco de dados do MySQL que será utilizado.
+DB_USERNAME é o seu nome de usuário do MySQL que por padrão é root, mas o seu caso pode ser diferente.
+DB_PASSWORD vai receber sua senha do MySQL. Caso não tiver uma, pode deixar vazio.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+ADMIN_EMAIL contém o email do Super Admin que terá todas as permissões e todos os perfis do sistema.
+ADMIN_PASSWORD vai receber sua senha.
+Os demais campos do '.env' você altera se quiser.
+
+## Seeders
+
+## Comandos do terminal
+
+Primeiramente é preciso instalar o pacote do composer e do npm, já que seus arquivos não vem junto com o repositório e podem estar sempre precisando de atualizações. Para instalar os pacotes, basta executar estes comandos:
+
+```
+composer install
+npm install
+```
+
+
+Agora preciso gerar as tabelas de dados em seu banco. Aqui também será gerado o usuário Super Admin, para isso use o comando:
+```
+php artisan migrate
+```
+
+
+Depois disso será necessários gerar os dados dentro do arquivo de seeders, dentro dele está uma lista de perfis e permissões que será necessário para a plataforma. Além disso, será gerados vários usuários no banco de dados tendo alguns perfis definidos para testar suas funcionalidades. Antes disso, será gerado um usuário com o perfil 'Super Admin' que terá todas as permissões. Seu email e senha será definido no arquivo 'README.md' enquanto a senha dos demais usuários gerados pelos seeders será 'password'. Para gerar esses dados, basta user o comando:
+```
+php artisan db:seed
+```
+
+
+Talvez seja necessário uma chave de aplicação (Application Key). Para resolver o problema basta utilizar este comando no terminal:
+```
+php artisan key:generate
+```

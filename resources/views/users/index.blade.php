@@ -14,7 +14,6 @@
 
     <table class="table table-striped table-bordered mt-4 mx-5">
         <thead>
-            <th>ID</th>
             <th>Usuário</th>
             <th>Email</th>
             <th>Data de cadastro</th>
@@ -23,7 +22,6 @@
         <tbody>
             @foreach($users as $user)
             <tr>
-                <td>{{$user->id}} </td>
                 <td>{{$user->name}} </td>
                 <td>{{$user->email}} </td>
                 <td>{{$user->created_at != null ? date_format($user->created_at, "s:i:H - d/m/Y") : 'Criado no Seeder' }} </td>
