@@ -14,10 +14,10 @@ Esta é uma plataforma desenvolvida para facilitar a administração e organiza�
 
 ## Tecnologias usadas
 
-Laravel versão 11: Framework PHP para o desenvolvimento web e foi utilizada a versão 8.3.8 do PHP.
-MySQL versão 8.4: Sistema de gerenciamento de banco de dados relacional.
-HTML/CSS/Bootstrap: Tecnologias front-end para a interface do usuário.
-JQuery: Para o cadastro de campus, foi criada funções no jquery para prencher os campos de endereço ao digitar um cep válido.
+- Laravel versão 11: Framework PHP para o desenvolvimento web e foi utilizada a versão 8.3.8 do PHP.
+- MySQL versão 8.4: Sistema de gerenciamento de banco de dados relacional.
+- HTML/CSS/Bootstrap: Tecnologias front-end para a interface do usuário.
+- JQuery: Para o cadastro de campus, foi criada funções no jquery para prencher os campos de endereço ao digitar um cep válido.
 
 # Ao clonar o repositório
 
@@ -42,14 +42,14 @@ ADMIN_PASSWORD=SENHA_DO_ADMINISTRADOR
 ```
 
 
-No DB_DATABASE vai ser inserido o nome do banco de dados do MySQL que será utilizado.
-DB_USERNAME é o seu nome de usuário do MySQL que por padrão é root, mas o seu caso pode ser diferente.
-DB_PASSWORD vai receber sua senha do MySQL. Caso não tiver uma, pode deixar vazio.
+- No DB_DATABASE vai ser inserido o nome do banco de dados do MySQL que será utilizado.
+- DB_USERNAME é o seu nome de usuário do MySQL que por padrão é root, mas o seu caso pode ser diferente.
+- DB_PASSWORD vai receber sua senha do MySQL. Caso não tiver uma, pode deixar vazio.
 
 
-ADMIN_EMAIL contém o email do Super Admin que terá todas as permissões e todos os perfis do sistema.
-ADMIN_PASSWORD vai receber sua senha.
-Os demais campos do '.env' você altera se quiser.
+- ADMIN_EMAIL contém o email do Super Admin que terá todas as permissões e todos os perfis do sistema.
+- ADMIN_PASSWORD vai receber sua senha.
+- Os demais campos do '.env' você altera se quiser.
 
 ## Seeders
 
