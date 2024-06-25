@@ -53,6 +53,9 @@ Os demais campos do '.env' você altera se quiser.
 
 ## Seeders
 
+Os arquivos de seeders são responsáveis por gerar dados necessários para a execução do sistema. Eles vão gerar os dados de perfis, permissões e ainda vai criar o usuário super admin que receberá todas as permissões. Além disso tem os dados de cidades e estados brasileiros que serão importantes para o formulário de criação de campus. 
+Por fim, ele vai gerar alguns usuários com determinados perfis para testar as funcionalidades do sistema. Será gerado um administrador, um diretor, dois coordenadores, três professores e mais cinco usuários sem perfil. Todos eles terão 'password' como sua senha.
+
 ## Comandos do terminal
 
 Primeiramente é preciso instalar o pacote do composer e do npm, já que seus arquivos não vem junto com o repositório e podem estar sempre precisando de atualizações. Para instalar os pacotes, basta executar estes comandos:
