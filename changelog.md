@@ -35,3 +35,8 @@ Neste dia foi testado os código para cadastrar um usuário a um curso.
 - A função show de CourseController foi alterado para mostrar os dados de alunos matriculados também.
 - O arquivo 'welcome.blade.php' foi alterado para disponibilizar uma descrição da escola LaraTech.
 - Agora o arquivo 'README.md' está descrevendo o projeto.
+- Todas as alterações foram commitadas na branch 'cadastro-curso' que por sua vez fez um merge com a branch 'main'.
+
+### O que falta fazer
+- Criar um funções de criação de provas e de dar notas que somente quem tem o perfil de Professor pode acessar. Depois será criada páginas onde o aluno pode ver suas notas.
+- Criar funções de testes para todos os controllers criados até então. Começando pelos testes unitários.
