@@ -1,5 +1,7 @@
 <?php
 
+// Créditos do seeder: https://github.com/magnobiet/laravel-states-cities-brazil
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;

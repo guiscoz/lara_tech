@@ -40,3 +40,6 @@ Neste dia foi testado os código para cadastrar um usuário a um curso.
 ### O que falta fazer
 - Criar um funções de criação de provas e de dar notas que somente quem tem o perfil de Professor pode acessar. Depois será criada páginas onde o aluno pode ver suas notas.
 - Criar funções de testes para todos os controllers criados até então. Começando pelos testes unitários.
+
+## 09/08/2024
+- Foi adicionado um comentário nos arquivos CitiesTableSeeder e StatesTableSeeder para dar crédito ao repositório original deste material criado para os estados e municípios brasileiros. Estes seeders orignalmente criados neste repositório: // Créditos do seeder: https://github.com/magnobiet/laravel-states-cities-brazil
