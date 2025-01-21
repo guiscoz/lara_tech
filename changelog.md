@@ -43,3 +43,15 @@ Neste dia foi testado os código para cadastrar um usuário a um curso.
 
 ## 09/08/2024
 - Foi adicionado um comentário nos arquivos CitiesTableSeeder e StatesTableSeeder para dar crédito ao repositório original deste material criado para os estados e municípios brasileiros. Estes seeders orignalmente criados neste repositório: // Créditos do seeder: https://github.com/magnobiet/laravel-states-cities-brazil
+
+## 21/01/2025
+
+Agora é possível rodar o projeto usando o Docker.
+
+### Adicionado
+
+Um arquivo de docker-compose para definir os containers e o volume necessários para funcionar no Docker. Ele foi gerado com o recurso Sail do Laravel e então sofreu alguns ajustes para funcionar.
+
+### Alterado
+
+Foi necessário criar duas novas variável de ambiente (WWWGROUP e WWWUSER) para serem usadas no docker-compose e evitar problemas de permissões, execuções de processos no Laravel e consistência entre o host e o usuário. Além disso, o arquivo README.md explica como executar o projeto com o Docker.

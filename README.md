@@ -82,3 +82,40 @@ Talvez seja necessário uma chave de aplicação (Application Key). Para resolve
 ```
 php artisan key:generate
 ```
+
+
+## Docker
+
+
+Caso queira executar sem precisar instalar o php, composer ou mysql, é possível fazer isso com o Docker. Seu ambiente foi definido pelo arquivo 'docker-compose.yml' gerado pelo recurso Sail do próprio Laravel. O primeiro comando de execução necessário é de construção de ambiente que irá gerar dois containers: um para o laravel e outro do mysql 
+```
+docker-compose build
+```
+
+
+Depois disso será necessário subir o ambiente com o comando:
+```
+docker-compose up -d
+```
+
+Caso queira consultar dados dos containers gerados, você usar este comando:
+```
+docker ps
+```
+
+
+Em seguida você deve rodar as migrations e o seeder:
+```
+docker-compose exec lara_tech-<container_laravel> php artisan migrate --seed
+```
+O '--seed' permite a execução dos Seeders logo após do migrate, caso realizar essas ações separadamente, utilize esses comandos:
+```
+docker-compose exec lara_tech-<container_laravel> php artisan migrate
+docker-compose exec lara_tech-<container_laravel> php artisan db:seed
+```
+
+
+Por fim, resta apenas um comando para executar o projeto e fazer no rodar no localhost(http://localhost:8000/):
+```
+docker exec -it lara_tech-<container_laravel> bash
+```
