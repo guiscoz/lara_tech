@@ -55,3 +55,10 @@ Um arquivo de docker-compose para definir os containers e o volume necessários 
 ### Alterado
 
 Foi necessário criar duas novas variável de ambiente (WWWGROUP e WWWUSER) para serem usadas no docker-compose e evitar problemas de permissões, execuções de processos no Laravel e consistência entre o host e o usuário. Além disso, o arquivo README.md explica como executar o projeto com o Docker.
+
+
+## 28/01/2025
+
+### Alterado
+
+No arquivo de docker-compose foi alterado o valor de ports do container laravel.test porque estava havendo erro para acessar as páginas do projeto dentro do ambiente Docker.
