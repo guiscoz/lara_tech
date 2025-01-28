@@ -115,4 +115,4 @@ docker-compose exec lara_tech-<container_laravel> php artisan db:seed
 ```
 
 
-Graças ao uso do Sail deste framework, não há necessidade de um comando para a execução do projeto porque suas páginas já estarão disponíveis assim que os containers forem ativados.
+Graças ao uso do Sail deste framework, não há necessidade de um comando para a execução do projeto porque suas páginas já estarão disponíveis no localhost (http://localhost:8000/) assim que os containers forem ativados.
