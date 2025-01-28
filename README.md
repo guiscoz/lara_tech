@@ -115,7 +115,4 @@ docker-compose exec lara_tech-<container_laravel> php artisan db:seed
 ```
 
 
-Por fim, resta apenas um comando para executar o projeto e fazer no rodar no localhost(http://localhost:8000/):
-```
-docker exec -it lara_tech-<container_laravel> bash
-```
+Graças ao uso do Sail deste framework, não há necessidade de um comando para a execução do projeto porque suas páginas já estarão disponíveis assim que os containers forem ativados.
