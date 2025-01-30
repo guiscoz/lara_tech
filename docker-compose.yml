@@ -1,5 +1,6 @@
 services:
-    laravel.test:
+    laratech:
+        container_name: laratech-app
         build:
             context: './vendor/laravel/sail/runtimes/8.4'
             dockerfile: Dockerfile
@@ -25,6 +26,7 @@ services:
         depends_on:
             - mysql
     mysql:
+        container_name: laratech-db
         image: 'mysql/mysql-server:8.0'
         ports:
             - '3307:3306'
@@ -34,7 +36,7 @@ services:
             MYSQL_USER: '${DB_USERNAME}'
             MYSQL_PASSWORD: '${DB_PASSWORD}'
         volumes:
-            - 'sail-mysql:/var/lib/mysql'
+            - 'laratech-volume:/var/lib/mysql'
             - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
         networks:
             - sail
@@ -50,5 +52,5 @@ networks:
     sail:
         driver: bridge
 volumes:
-    sail-mysql:
+    laratech-volume:
         driver: local

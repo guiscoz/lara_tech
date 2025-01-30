@@ -106,13 +106,7 @@ docker ps
 
 Em seguida você deve rodar as migrations e o seeder:
 ```
-docker-compose exec lara_tech-<container_laravel> php artisan migrate --seed
+docker-compose exec laratech php artisan migrate --seed
 ```
-O '--seed' permite a execução dos Seeders logo após do migrate, caso realizar essas ações separadamente, utilize esses comandos:
-```
-docker-compose exec lara_tech-<container_laravel> php artisan migrate
-docker-compose exec lara_tech-<container_laravel> php artisan db:seed
-```
-
 
 Graças ao uso do Sail deste framework, não há necessidade de um comando para a execução do projeto porque suas páginas já estarão disponíveis no localhost (http://localhost:8000/) assim que os containers forem ativados.
