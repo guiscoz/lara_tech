@@ -62,3 +62,9 @@ Foi necessário criar duas novas variável de ambiente (WWWGROUP e WWWUSER) para
 ### Alterado
 
 No arquivo de docker-compose foi alterado o valor de ports do container laravel.test porque estava havendo erro para acessar as páginas do projeto dentro do ambiente Docker. O arquivo README.md explica que não há necessidade de um comando de execução do projeto porque a ativação dos containers faz isso automaticamente.
+
+## 30/01/2025
+
+### Alterado
+
+Os nomes do container e do volume foram alterados porque antes estava sendo usados nomes gerados pelo próprio Sail e foi decidido que seria melhor usar nomes próprios para o projeto. Também houve uma correção no readme.
