@@ -68,3 +68,7 @@ No arquivo de docker-compose foi alterado o valor de ports do container laravel.
 ### Alterado
 
 Os nomes do container e do volume foram alterados porque antes estava sendo usados nomes gerados pelo próprio Sail e foi decidido que seria melhor usar nomes próprios para o projeto. Também houve uma correção no readme.
+
+## 05/02
+
+A network definida no docker-compose foi renomeada para evitar conflito com outros projetos. No arquivo 'README.md' foi adicionado uma parte falando sobre duas variáveis de ambiente necessárias para rodar o projeto no Docker.

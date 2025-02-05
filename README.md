@@ -109,4 +109,9 @@ Em seguida você deve rodar as migrations e o seeder:
 docker-compose exec laratech php artisan migrate --seed
 ```
 
-Graças ao uso do Sail deste framework, não há necessidade de um comando para a execução do projeto porque suas páginas já estarão disponíveis no localhost (http://localhost:8000/) assim que os containers forem ativados.
+Graças ao uso do Sail deste framework, não há necessidade de um comando para a execução do projeto porque suas páginas já estarão disponíveis no localhost (http://localhost:8000/) assim que os containers forem ativados. Apenas será necessário definir essas variaveis de ambiente no arquivo '.env':
+
+```
+WWWGROUP=1000_ou_id_grupo_host
+WWWUSER=1000_ou_id_usuario_local
+```
