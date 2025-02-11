@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campus;
-use App\Models\City;
 use App\Models\User;
 use App\Models\State;
 use App\Http\Requests\CampusRequest;
-use Spatie\Permission\Exceptions\UnauthorizedException;
-use Illuminate\Support\Facades\Auth;
 
 class CampusController extends Controller
 {
@@ -23,10 +20,6 @@ class CampusController extends Controller
 
     public function create()
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar campus') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $coordinators = User::role('Coordenador')->get();
         $states = State::all();
 
@@ -35,10 +28,6 @@ class CampusController extends Controller
 
     public function store(CampusRequest $request)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar campus') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $newCampus = [
             'name' => $request->name,
             'address' => $request->address,
@@ -64,10 +53,6 @@ class CampusController extends Controller
 
     public function edit(string $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar campus') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $campus = Campus::findOrFail($id);
         $coordinators = User::role('Coordenador')->get();
         $states = State::all();
@@ -77,11 +62,7 @@ class CampusController extends Controller
     }
 
     public function update(CampusRequest $request, string $id)
-    {
-        if(!Auth::user()->hasPermissionTo('Gerenciar campus') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-    
+    {    
         $campus = Campus::findOrFail($id);
 
         $newData = [
@@ -102,10 +83,6 @@ class CampusController extends Controller
 
     public function destroy(string $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar campus') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $campus = Campus::findOrFail($id);
         $campus->update(['active' => false]);
 

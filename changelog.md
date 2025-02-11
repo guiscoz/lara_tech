@@ -71,4 +71,16 @@ Os nomes do container e do volume foram alterados porque antes estava sendo usad
 
 ## 05/02
 
+### Alterado
+
 A network definida no docker-compose foi renomeada para evitar conflito com outros projetos. No arquivo 'README.md' foi adicionado uma parte falando sobre duas variáveis de ambiente necessárias para rodar o projeto no Docker.
+
+## 11/02
+
+### Adicionado
+
+Um novo middleware chamado CheckPermission que servirá para verificar se o usuário tem a permissão necessária antes de acessar rota. Assim acabou a nessidade de fazer essa verificação diretamente nas funções dos controllers, removendo bastante código repetido.
+
+### Alterado
+
+Além das verificações de permissões terem sido removidas dos controllers, houve ajuste no agrupamento de rotas para aplicar o novo middleware.

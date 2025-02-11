@@ -4,28 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Exceptions\UnauthorizedException;
 
 class UserController extends Controller
 {
     public function index(Request $request)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar permissões') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $users = User::where('id', '!=', 1)->paginate(10);
         return view('users.index', compact('users'));
     }
 
     public function roles($user)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar permissões') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $user = User::where('id', $user)->first();
 
         $roles = Role::all();
@@ -43,10 +33,6 @@ class UserController extends Controller
 
     public function rolesSync(Request $request, $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar permissões') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $rolesRequest = $request->except(['_token', '_method']);
 
         foreach($rolesRequest as $key => $value) {
@@ -65,10 +51,6 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar permissões') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $user = User::where('id', $id);
         $user->delete();
 

@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Campus;
 use App\Models\User;
-use Spatie\Permission\Exceptions\UnauthorizedException;
 use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
@@ -34,10 +33,6 @@ class CourseController extends Controller
 
     public function create()
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar cursos') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $teachers = User::role('Professor')->get();
         $campuses = Campus::where('active', true)->get();
         return view('courses.create', compact('teachers', 'campuses'));
@@ -45,10 +40,6 @@ class CourseController extends Controller
 
     public function store(CourseRequest $request)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar cursos') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $newCourse = [
             'name' => $request->name,
             'campus_id' => $request->campus_id,
@@ -69,10 +60,6 @@ class CourseController extends Controller
 
     public function edit(string $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar cursos') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $course = Course::findOrFail($id);
         $teachers = User::role('Professor')->get();
         $campuses = Campus::where('active', true)->get();
@@ -82,10 +69,6 @@ class CourseController extends Controller
 
     public function update(CourseRequest $request, string $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar cursos') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $course = Course::findOrFail($id);
 
         $newData = [
@@ -102,10 +85,6 @@ class CourseController extends Controller
 
     public function destroy(string $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar cursos') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $course = Course::findOrFail($id);
         $course->update(['active' => false]);
 

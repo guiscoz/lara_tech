@@ -34,7 +34,10 @@ Route::group(['prefix' => 'course'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::group(['prefix' => 'role'], function () {
+    Route::group([
+        'prefix' => 'role',
+        'middleware' => ['check.permission:Gerenciar permissões']
+    ], function () {
         Route::get('', [RoleController::class, 'index'])->name('role.index');
         Route::get('/{role}/permissions', [RoleController::class, 'permissions'])->name('role.permissions');
         Route::put('/{role}/permissions/sync', [RoleController::class, 'permissionsSync'])->name('role.permissionsSync');
@@ -45,7 +48,10 @@ Route::group(['middleware' => 'auth'], function(){
         Route::delete('/delete/{id}', [RoleController::class, 'destroy'])->name('role.destroy');
     });
 
-    Route::group(['prefix' => 'permission'], function () {
+    Route::group([
+        'prefix' => 'permission', 
+        'middleware' => ['check.permission:Gerenciar permissões']
+    ], function () {
         Route::get('', [PermissionController::class, 'index'])->name('permission.index');
         Route::get('/create', [PermissionController::class, 'create'])->name('permission.create');
         Route::post('/store', [PermissionController::class, 'store'])->name('permission.store');
@@ -54,14 +60,20 @@ Route::group(['middleware' => 'auth'], function(){
         Route::delete('/delete/{id}', [PermissionController::class, 'destroy'])->name('permission.destroy');
     });
 
-    Route::group(['prefix' => 'user'], function () {
+    Route::group([
+        'prefix' => 'user',
+        'middleware' => ['check.permission:Gerenciar permissões']
+    ], function () {
         Route::get('', [UserController::class, 'index'])->name('user.index');
         Route::get('/{id}/roles', [UserController::class, 'roles'])->name('user.roles');
         Route::put('/{id}/roles/sync', [UserController::class, 'rolesSync'])->name('user.rolesSync');
         Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     });
 
-    Route::group(['prefix' => 'campus'], function () {
+    Route::group([
+        'prefix' => 'campus',
+        'middleware' => ['check.permission:Gerenciar campus']
+    ], function () {
         Route::get('/create', [CampusController::class, 'create'])->name('campus.create');
         Route::post('/store', [CampusController::class, 'store'])->name('campus.store');
         Route::get('/edit/{id}', [CampusController::class, 'edit'])->name('campus.edit');
@@ -69,7 +81,10 @@ Route::group(['middleware' => 'auth'], function(){
         Route::delete('/delete/{id}', [CampusController::class, 'destroy'])->name('campus.destroy');
     });
 
-    Route::group(['prefix' => 'event'], function () {
+    Route::group(
+        ['prefix' => 'event',
+        'middleware' => ['check.permission:Gerenciar eventos']
+    ], function () {
         Route::get('/create', [EventController::class, 'create'])->name('event.create');
         Route::post('/store', [EventController::class, 'store'])->name('event.store');
         Route::get('/edit/{id}', [EventController::class, 'edit'])->name('event.edit');
@@ -77,7 +92,10 @@ Route::group(['middleware' => 'auth'], function(){
         Route::delete('/delete/{id}', [EventController::class, 'destroy'])->name('event.destroy');
     });
 
-    Route::group(['prefix' => 'course'], function () {
+    Route::group([
+        'prefix' => 'course',
+        'middleware' => ['check.permission:Gerenciar cursos']
+    ], function () {
         Route::get('/create', [CourseController::class, 'create'])->name('course.create');
         Route::post('/store', [CourseController::class, 'store'])->name('course.store');
         Route::get('/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');

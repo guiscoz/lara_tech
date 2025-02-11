@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EventRequest;
 use App\Models\Event;
 use App\Models\Campus;
-use App\Models\User;
-use Spatie\Permission\Exceptions\UnauthorizedException;
 use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
@@ -19,20 +17,12 @@ class EventController extends Controller
 
     public function create()
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar eventos') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $campuses = Campus::where('active', true)->get();
         return view('events.create', compact('campuses'));
     }
 
     public function store(EventRequest $request)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar eventos') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $newEvent = [
             'name' => $request->name,
             'campus_id' => $request->campus_id,
@@ -54,10 +44,6 @@ class EventController extends Controller
 
     public function edit(string $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar eventos') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $event = Event::findOrFail($id);
         $campuses = Campus::where('active', true)->get();
         return view('events.edit', compact('event', 'campuses'));
@@ -65,10 +51,6 @@ class EventController extends Controller
 
     public function update(EventRequest $request, string $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar eventos') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $event = Event::findOrFail($id);
 
         $newData = [
@@ -85,10 +67,6 @@ class EventController extends Controller
 
     public function destroy(string $id)
     {
-        if(!Auth::user()->hasPermissionTo('Gerenciar eventos') && !Auth::user()->hasRole('Super Admin')){
-            throw new UnauthorizedException('403', 'Você não tem permissão');
-        }
-
         $event = Event::findOrFail($id);
         $event->update(['active' => false]);
 
