@@ -33,8 +33,8 @@ Agora deve criar o arquivo '.env' usando o '.env.example' como base para armazen
 
 
 ```
-DB_DATABASE=laravel
-DB_USERNAME=root
+DB_DATABASE=laratech
+DB_USERNAME=SEU_DB_USERNAME
 DB_PASSWORD=SUA_SENHA_MYSQL
 
 ADMIN_EMAIL=EMAIL_DO_ADMINISTRADOR
@@ -50,6 +50,7 @@ ADMIN_PASSWORD=SENHA_DO_ADMINISTRADOR
 - ADMIN_EMAIL contém o email do Super Admin que terá todas as permissões e todos os perfis do sistema.
 - ADMIN_PASSWORD vai receber sua senha.
 - Os demais campos do '.env' você altera se quiser.
+
 
 ## Seeders
 
@@ -83,6 +84,32 @@ Talvez seja necessário uma chave de aplicação (Application Key). Para resolve
 php artisan key:generate
 ```
 
+## Testes
+
+Para verificar se o projeto está funcionado sem precisar testar tudo na mão, foram criado vários arquivos de testes para evitar todo esse trabalho. Mas antes será necessário criar o arquivo '.env.testing' com a seguinte estrututa:
+
+```
+APP_ENV=testing
+APP_DEBUG=true
+APP_KEY=SUA_APP_KEY
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1_ou_seu_host
+DB_PORT=3306
+DB_DATABASE=laratech_tests
+DB_USERNAME=SEU_DB_USERNAME
+DB_PASSWORD=SUA_SENHA_MYSQL
+
+ADMIN_EMAIL=EMAIL_DO_ADMINISTRADOR
+ADMIN_PASSWORD=SENHA_DO_ADMINISTRADOR
+```
+
+Também será necessário rodar migrations no banco de testes com o comando:
+```
+php artisan migrate --env=testing
+```
+
+O nome do banco de teste está definido no arquivo 'phpunitxml' na linha que está escrito "<env name="DB_DATABASE" value="laratech_tests"/>". Se quiser usar outro nome para o banco de dados, também será necessário mexer nessa linha.
 
 ## Docker
 

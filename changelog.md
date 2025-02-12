@@ -84,3 +84,13 @@ Um novo middleware chamado CheckPermission que servirá para verificar se o usu�
 ### Alterado
 
 Além das verificações de permissões terem sido removidas dos controllers, houve ajuste no agrupamento de rotas para aplicar o novo middleware.
+
+## 12/02
+
+### Adicionado
+
+Uma nova branch para a criação de testes automatizados para os controllers do projeto. Começando pela única função de HomeController que possui apenas uma retornado sua view. Dessa forma houve apenas a necessidade de criar um teste de feature. Em seguida foi adicionado mais dois testes de feature para o CityController: um para verificar se a rota retorna a quantade certa de cidades e outra para verificar se retorna uma lista vazio caso o usuário tentar usar um id de estado que não existe.
+
+### Alterado
+
+Uma linha do arquivo 'phpunit.xml' para que os testes que utilizam banco de dados possa usar um que exista. Anteriormente seu nome estava definido como 'testing' e isso dava erro com os testes de CityController. Então foi criado o arquivo '.env.testing' onde foi definido um banco de dados que será usado somente para a realização de testes. O arquivo 'README.md' também foi modificado para explicar como aplicar os testes.

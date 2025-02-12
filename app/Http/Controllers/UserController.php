@@ -17,7 +17,6 @@ class UserController extends Controller
     public function roles($user)
     {
         $user = User::where('id', $user)->first();
-
         $roles = Role::all();
 
         foreach($roles as $role) {

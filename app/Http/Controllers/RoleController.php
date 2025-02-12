@@ -57,7 +57,6 @@ class RoleController extends Controller
     public function permissions($role)
     {
         $role = Role::where('id', $role)->first();
-
         $permissions = Permission::all();
 
         foreach($permissions as $permission) {
