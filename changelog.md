@@ -89,8 +89,18 @@ Além das verificações de permissões terem sido removidas dos controllers, ho
 
 ### Adicionado
 
-Uma nova branch para a criação de testes automatizados para os controllers do projeto. Começando pela única função de HomeController que possui apenas uma retornado sua view. Dessa forma houve apenas a necessidade de criar um teste de feature. Em seguida foi adicionado mais dois testes de feature para o CityController: um para verificar se a rota retorna a quantade certa de cidades e outra para verificar se retorna uma lista vazio caso o usuário tentar usar um id de estado que não existe.
+Uma nova branch para a criação de testes automatizados para os controllers do projeto. Começando pela única função de HomeController que possui apenas uma retornado sua view. Dessa forma houve apenas a necessidade de criar um teste de feature. Em seguida foi adicionado mais dois testes de feature para o CityController: um para verificar se a rota retorna a quantitade certa de cidades e outra para verificar se retorna uma lista vazio caso o usuário tentar usar um id de estado que não existe.
 
 ### Alterado
 
 Uma linha do arquivo 'phpunit.xml' para que os testes que utilizam banco de dados possa usar um que exista. Anteriormente seu nome estava definido como 'testing' e isso dava erro com os testes de CityController. Então foi criado o arquivo '.env.testing' onde foi definido um banco de dados que será usado somente para a realização de testes. O arquivo 'README.md' também foi modificado para explicar como aplicar os testes.
+
+## 13/02
+
+### Alterado
+
+A função que testava a quantidade de cidades por um estado em sua rota foi alterada para testar o retorno da rota de cada estado gerado pelo seeders. Ele irá verificar se cada um deles tem cidades atreladas à eles.
+
+### Adicionado
+
+O arquivo AuthControllerFeatureTest que testa as funções relacionadas a autenticação, sendo elas a de retorno das views e credenciais válidas ou não de cadastro e login. Um CampusControllerFeatureTest para testar as funções do controller de campus além de possíveis erro como acessar a rota sem estar autenticado, sem a permissão ou tentar acessar um campus que não existe. Em seguida foi adicionado o EventControllerFeatureTest para fazer o mesmo com o controller de eventos.

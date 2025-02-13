@@ -62,7 +62,7 @@ class EventController extends Controller
         ];
 
         $event->update($newData);
-        return redirect()->route('event.index')->with('success', 'Eventos atualizado com sucesso!');
+        return redirect()->route('event.index')->with('success', 'Evento atualizado com sucesso!');
     }
 
     public function destroy(string $id)

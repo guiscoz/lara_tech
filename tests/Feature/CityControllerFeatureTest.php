@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\State;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -19,24 +20,30 @@ class CityControllerFeatureTest extends TestCase
         Artisan::call('db:seed', ['--class' => 'CitiesTableSeeder']);
     }
 
-    public function testGetCitiesReturnsCitiesForState()
+    public function testGetCitiesReturnsCitiesForEachState()
     {
-        // Define o state_id para o teste (assumindo que o StateSeeder cria estados com IDs 1, 2, etc.)
-        $stateId = 11;
+        // Obtém todos os estados cadastrados
+        $states = State::all();
 
-        // Faz uma requisição GET para a rota com o state_id
-        $response = $this->getJson("/api/cities/{$stateId}");
+        // Percorre cada estado
+        foreach ($states as $state) {
+            // Faz uma requisição GET para a rota com o state_id
+            $response = $this->getJson("/api/cities/{$state->id}");
 
-        // Verifica o status da resposta
-        $response->assertStatus(200);
+            // Verifica o status da resposta
+            $response->assertStatus(200);
 
-        // Verifica se o JSON retornado contém cidades
-        $response->assertJsonCount(52); // Ajuste o número conforme o CitySeeder
+            // Verifica a estrutura do JSON
+            $response->assertJsonStructure([
+                '*' => ['id', 'state_id', 'name'],
+            ]);
 
-        // Verifica a estrutura do JSON
-        $response->assertJsonStructure([
-            '*' => ['id', 'state_id', 'name'],
-        ]);
+            // Verifica se o state_id das cidades retornadas corresponde ao estado atual
+            $response->assertJsonFragment(['state_id' => $state->id]);
+
+            // Verifica se o número de cidades retornadas é maior que zero
+            $this->assertGreaterThan(0, count($response->json()));
+        }
     }
 
     public function testGetCitiesReturnsEmptyArrayForInvalidState()
