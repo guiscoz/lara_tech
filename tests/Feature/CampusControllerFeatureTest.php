@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Campus;
 use App\Models\User;
-use Illuminate\Support\Facades\Artisan;
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -21,13 +21,15 @@ class CampusControllerFeatureTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        $this->seed(DatabaseSeeder::class);
 
-        Artisan::call('db:seed', ['--class' => 'RolesTableSeeder']);
-        Artisan::call('db:seed', ['--class' => 'PermissionsTableSeeder']);
-        Artisan::call('db:seed', ['--class' => 'RolesUsersTableSeeder']);
-        Artisan::call('db:seed', ['--class' => 'RolePermissionSeeder']);
-        Artisan::call('db:seed', ['--class' => 'StatesTableSeeder']);
-        Artisan::call('db:seed', ['--class' => 'CitiesTableSeeder']);
+        $this->userWithPermission = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Diretor');
+        })->first();
+
+        $this->nonExistingId = 999999;
+    
+        $this->userNoPermission = User::factory()->create();
 
         $this->campus = Campus::create([
             'name' => 'Campus Teste',
@@ -48,12 +50,8 @@ class CampusControllerFeatureTest extends TestCase
             'zip_code' => '87654321',
             'city_id' => 1100023,
             'state_id' => 11,
-            'coordinator_id' => User::factory()->create()->id,
+            'coordinator_id' => User::first()->id,
         ];
-
-        $this->userNoPermission = User::factory()->create();
-        $this->userWithPermission = User::factory()->create()->givePermissionTo('Gerenciar campus');
-        $this->nonExistingId = 999999;
     }
 
     public function testCampusIndexView()

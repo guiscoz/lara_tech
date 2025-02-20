@@ -104,3 +104,9 @@ A função que testava a quantidade de cidades por um estado em sua rota foi alt
 ### Adicionado
 
 O arquivo AuthControllerFeatureTest que testa as funções relacionadas a autenticação, sendo elas a de retorno das views e credenciais válidas ou não de cadastro e login. Um CampusControllerFeatureTest para testar as funções do controller de campus além de possíveis erro como acessar a rota sem estar autenticado, sem a permissão ou tentar acessar um campus que não existe. Em seguida foi adicionado o EventControllerFeatureTest para fazer o mesmo com o controller de eventos.
+
+## 20/02
+
+### Alterado
+
+Ajustes foram feitos nos testes de EventControllerFeatureTest e CampusControllerFeatureTest para deixar o código mais organizado. Entretanto foi descoberto que os testes podem falhar dependendo da forma de execução. Com o recurso Testing do VSCode, todos eles passam caso forem executados um a um. Utilizando os comando de 'php artisan', apenas a função de HomeControllerFeatureTest e AuthControllerFeatureTest passam ao serem executados de uma vez através de comando. A de CampusController passa se for executada uma a uma e a de EventController ainda dá erro.

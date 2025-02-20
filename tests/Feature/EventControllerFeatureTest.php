@@ -5,8 +5,8 @@ namespace Tests\Feature;
 use App\Models\Event;
 use App\Models\Campus;
 use App\Models\User;
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -25,13 +25,7 @@ class EventControllerFeatureTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-
-        Artisan::call('db:seed', ['--class' => 'RolesTableSeeder']);
-        Artisan::call('db:seed', ['--class' => 'PermissionsTableSeeder']);
-        Artisan::call('db:seed', ['--class' => 'RolesUsersTableSeeder']);
-        Artisan::call('db:seed', ['--class' => 'RolePermissionSeeder']);
-        Artisan::call('db:seed', ['--class' => 'StatesTableSeeder']);
-        Artisan::call('db:seed', ['--class' => 'CitiesTableSeeder']);
+        $this->seed(DatabaseSeeder::class);
 
         $this->campus = Campus::create([
             'name' => 'Campus Teste',
@@ -44,15 +38,12 @@ class EventControllerFeatureTest extends TestCase
             'coordinator_id' => User::first()->id,
         ]);
 
-        $this->data = [
-            'name' => 'Evento Teste 2',
-            'campus_id' => $this->campus->id,
-            'event_date' => Carbon::tomorrow()->toDateString(),
-            'event_time' => '16:00:00',
-        ];
-
         $this->userNoPermission = User::factory()->create();
-        $this->userWithPermission = User::factory()->create()->givePermissionTo('Gerenciar eventos');
+
+        $this->userWithPermission = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Diretor');
+        })->first();
+
         $this->nonExistingId = 999999;
 
         $this->event = Event::create([
@@ -62,6 +53,13 @@ class EventControllerFeatureTest extends TestCase
             'event_time' => '14:30:00',
             'creator_id' => $this->userWithPermission->id,
         ]);
+
+        $this->data = [
+            'name' => 'Evento Teste 2',
+            'campus_id' => $this->campus->id,
+            'event_date' => Carbon::tomorrow()->toDateString(),
+            'event_time' => '16:00:00',
+        ];
     }
 
     public function testEventIndexView()
